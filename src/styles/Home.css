@@ -1,0 +1,15 @@
+.main-container {
+    margin-top: 80px;
+    max-width: 95%;
+}
+
+.card {
+    max-width: 320px;
+    display: flex;
+    text-align: center;
+}
+
+.cardMedia {
+    height: 12em;
+}
+
