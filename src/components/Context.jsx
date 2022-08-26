@@ -20,10 +20,11 @@ function Provider(props) {
       })
   };
 
-  useEffect(loadData , []);
 
-  const onDetails = (id) => {
-    navigate(`/details/${id}`);
+  useEffect(loadData, []);
+  
+  const onDetails = (name) => {
+    navigate(`/details/${name}`);
   }
   const onHome = () => {
     navigate('/');
@@ -33,7 +34,6 @@ function Provider(props) {
   }
 
 
-
     return (
         <Context.Provider value={{ 
             pokemon,
@@ -41,7 +41,6 @@ function Provider(props) {
             onDetails,
             onHome,
             onFavourites,
-
         }}>
             {props.children}
         </Context.Provider>

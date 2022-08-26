@@ -40,7 +40,7 @@ function Home() {
             <Grid key={index} item xs={12} sm={2}>
             <Card 
               className='card'
-              onClick={() => onDetails(poke.id)}
+              onClick={() => onDetails(poke.name)}
             >
               <CardActionArea>
                 <CardContent>

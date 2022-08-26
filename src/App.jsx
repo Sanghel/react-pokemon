@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={<Home />} />
         <Route exact path='/favourites' element={<Favourites />} />
-        <Route path='details/:id' element={<PokemonDetails />} />        
+        <Route path='details/:name' element={<PokemonDetails />} />        
       </Routes>
     </Provider>
   );
