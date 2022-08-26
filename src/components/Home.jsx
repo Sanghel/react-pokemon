@@ -1,31 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Grid, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+import { Context } from './Context';
 import '../styles/Home.css';
 
 function Home() {
   // const URL = 'https://pokeapi.co/api/v2/';
-  const [pokemon, setPokemon] = useState([]);
-  const navigate = useNavigate();
+  // const [pokemon, setPokemon] = useState([]);
+  // const navigate = useNavigate();
 
-  const loadData = () => {
-    axios.get('https://pokeapi.co/api/v2/pokemon?limit=251')
-      .then(res => {
-        for (let i = 0; i < res.data.results.length; i++) {
-          axios.get(res.data.results[i].url)
-            .then(result => {
-              setPokemon(prevArray => [...prevArray, result.data])
-            })
-        }
-      })
-  };
+  // const loadData = () => {
+  //   axios.get('https://pokeapi.co/api/v2/pokemon?limit=251')
+  //     .then(res => {
+  //       for (let i = 0; i < res.data.results.length; i++) {
+  //         axios.get(res.data.results[i].url)
+  //           .then(result => {
+  //             setPokemon(prevArray => [...prevArray, result.data])
+  //           })
+  //       }
+  //     })
+  // };
 
-  useEffect(loadData , []);
+  // useEffect(loadData , []);
 
-  const onDetails = (id) => {
-    navigate(`/details=${id}`);
-  }
+  // const onDetails = (id) => {
+  //   navigate(`/details=${id}`);
+  // }
+
+  const { pokemon, onDetails } = React.useContext(Context);
 
   return (
     <>

@@ -1,15 +1,17 @@
 import React from 'react';
 import { AppBar, Toolbar, CssBaseline, Button, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+import { Context } from './Context';
 
 function NavBar() {
-  const navigate = useNavigate();
-  const onHome = () => {
-    navigate('/');
-  }
-  const onFavourites = () => {
-    navigate('/favourites');
-  }
+  // const navigate = useNavigate();
+  // const onHome = () => {
+  //   navigate('/');
+  // }
+  // const onFavourites = () => {
+  //   navigate('/favourites');
+  // }
+  const { onHome, onFavourites } = React.useContext(Context);
 
   return (
     <>
