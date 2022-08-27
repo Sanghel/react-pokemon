@@ -8,15 +8,14 @@ import '../styles/Home.css';
 function PokemonDetails() {
 
   const params = useParams();
-   const [pokemonDetails, setPokemonDetails] = useState([]);
+  const [pokemonDetails, setPokemonDetails] = useState([]);
   const { pokemon, onHome } = React.useContext(Context);
 
    const onPokeDetails = () => {
        pokemon.map(poke => {
          if (poke.name === params.name) {
            setPokemonDetails(poke);
-           console.log(pokemonDetails)
-          
+           console.log(pokemonDetails)          
          }
        })
    }

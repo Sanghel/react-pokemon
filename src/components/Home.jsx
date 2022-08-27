@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Grid, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
+import { Container, Grid, Card, CardActionArea, CardContent, CardMedia, Typography, Button } from '@mui/material';
 // import { useNavigate } from 'react-router-dom';
 import { Context } from './Context';
 import '../styles/Home.css';
@@ -27,7 +27,7 @@ function Home() {
   //   navigate(`/details=${id}`);
   // }
 
-  const { pokemon, onDetails } = React.useContext(Context);
+  const { pokemon, onDetails, saveFavourites } = React.useContext(Context);
 
   return (
     <>
@@ -40,7 +40,6 @@ function Home() {
             <Grid key={index} item xs={12} sm={2}>
             <Card 
               className='card'
-              onClick={() => onDetails(poke.name)}
             >
               <CardActionArea>
                 <CardContent>
@@ -55,6 +54,12 @@ function Home() {
                       <span> {poke.id} </span>
                     </h6>
                   </Typography>
+                  <Button onClick={() => onDetails(poke.name)}>
+                    Details
+                  </Button>
+                  <Button onClick={() => saveFavourites(poke.name)}>
+                    Add to Favourites
+                  </Button>
                 </CardContent>
               </CardActionArea>
             </Card>

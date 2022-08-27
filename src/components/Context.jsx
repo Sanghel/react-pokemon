@@ -6,6 +6,7 @@ const Context = React.createContext();
 
 function Provider(props) {
     const [pokemon, setPokemon] = useState([]);
+    const [favourites, setFavourites] = useState([]);
     const navigate = useNavigate();
 
     const loadData = () => {
@@ -32,6 +33,14 @@ function Provider(props) {
   const onFavourites = () => {
     navigate('/favourites');
   }
+  const saveFavourites = (name) => {
+    pokemon.map(poke => {
+      if (poke.name === name) {
+        setFavourites(prevArray => [...prevArray, poke]);
+        console.log(favourites);
+      }
+    })
+  }
 
 
     return (
@@ -41,6 +50,9 @@ function Provider(props) {
             onDetails,
             onHome,
             onFavourites,
+            saveFavourites,
+            favourites,
+            setFavourites,
         }}>
             {props.children}
         </Context.Provider>
