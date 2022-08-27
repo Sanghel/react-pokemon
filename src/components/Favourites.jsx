@@ -1,11 +1,10 @@
 import React from 'react';
 import { Context } from './Context';
 import { Container, Grid, Card, CardActionArea, CardContent, CardMedia, Typography, Button } from '@mui/material';
-
 import '../styles/Home.css';
 
 function Favourites() {
-  const { favourites, setFavourites } = React.useContext(Context);
+  const { favourites, deleteFavourites } = React.useContext(Context);
   return (
     <>
       <Container 
@@ -26,19 +25,19 @@ function Favourites() {
                   />
                   <Typography>
                     <b>{poke.name}</b>
+                  </Typography>
                     <h6>
                       Pokedex Number:
                       <span> {poke.id} </span>
                     </h6>
-                  </Typography>
                   {/* <Button onClick={() => onDetails(poke.name)}>
                     Details
-                  </Button>
-                  <Button onClick={() => saveFavourites(poke.name)}>
-                    Add to Favourites
                   </Button> */}
                 </CardContent>
               </CardActionArea>
+              <Button onClick={() => deleteFavourites(poke.name)}>
+                Quitar de Favoritos
+              </Button>
             </Card>
           </Grid>
           ))}

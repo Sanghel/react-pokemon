@@ -1,32 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Grid, Card, CardActionArea, CardContent, CardMedia, Typography, Button } from '@mui/material';
-// import { useNavigate } from 'react-router-dom';
 import { Context } from './Context';
 import '../styles/Home.css';
 
 function Home() {
-  // const URL = 'https://pokeapi.co/api/v2/';
-  // const [pokemon, setPokemon] = useState([]);
-  // const navigate = useNavigate();
-
-  // const loadData = () => {
-  //   axios.get('https://pokeapi.co/api/v2/pokemon?limit=251')
-  //     .then(res => {
-  //       for (let i = 0; i < res.data.results.length; i++) {
-  //         axios.get(res.data.results[i].url)
-  //           .then(result => {
-  //             setPokemon(prevArray => [...prevArray, result.data])
-  //           })
-  //       }
-  //     })
-  // };
-
-  // useEffect(loadData , []);
-
-  // const onDetails = (id) => {
-  //   navigate(`/details=${id}`);
-  // }
-
   const { pokemon, onDetails, saveFavourites } = React.useContext(Context);
 
   return (
@@ -41,7 +18,9 @@ function Home() {
             <Card 
               className='card'
             >
-              <CardActionArea>
+              <CardActionArea 
+                onClick={() => onDetails(poke.name)}
+              >
                 <CardContent>
                   <CardMedia 
                     className='cardMedia'
@@ -49,19 +28,14 @@ function Home() {
                   />
                   <Typography>
                     <b>{poke.name}</b>
+                  </Typography>
                     <h6>
                       Pokedex Number:
                       <span> {poke.id} </span>
                     </h6>
-                  </Typography>
-                  <Button onClick={() => onDetails(poke.name)}>
-                    Details
-                  </Button>
-                  <Button onClick={() => saveFavourites(poke.name)}>
-                    Add to Favourites
-                  </Button>
                 </CardContent>
               </CardActionArea>
+              <Button color="secondary" size='small' onClick={() => saveFavourites(poke.name)}>Add to Favourites</Button>
             </Card>
           </Grid>
           ))}

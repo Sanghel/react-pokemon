@@ -5,11 +5,11 @@ import axios from 'axios';
 const Context = React.createContext();
 
 function Provider(props) {
-    const [pokemon, setPokemon] = useState([]);
-    const [favourites, setFavourites] = useState([]);
-    const navigate = useNavigate();
+  const [pokemon, setPokemon] = useState([]);
+  const [favourites, setFavourites] = useState([]);
+  const navigate = useNavigate();
 
-    const loadData = () => {
+  const loadData = () => {
     axios.get('https://pokeapi.co/api/v2/pokemon?limit=251')
       .then(res => {
         for (let i = 0; i < res.data.results.length; i++) {
@@ -37,9 +37,15 @@ function Provider(props) {
     pokemon.map(poke => {
       if (poke.name === name) {
         setFavourites(prevArray => [...prevArray, poke]);
-        console.log(favourites);
       }
     })
+  }
+  const deleteFavourites = (name) => {
+    for (let i = 0; i < favourites.length; i++) {
+      if (favourites[i].name === name) {
+        favourites.splice( i , 1 );
+      }
+    }
   }
 
 
@@ -53,6 +59,7 @@ function Provider(props) {
             saveFavourites,
             favourites,
             setFavourites,
+            deleteFavourites
         }}>
             {props.children}
         </Context.Provider>
