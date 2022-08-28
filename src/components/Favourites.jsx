@@ -38,8 +38,8 @@ function Favourites() {
               </CardActionArea>
               <IconButton 
                 color="secondary" 
-                // aria-label="upload picture" 
-                // component="label" 
+                aria-label="upload picture" 
+                component="label" 
                 className='favorite--icon'
               >
                 {/* <input hidden accept="image/*" type="file" /> */}

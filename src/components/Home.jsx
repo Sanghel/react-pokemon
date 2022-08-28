@@ -38,16 +38,30 @@ function Home() {
                 </CardContent>
               </CardActionArea>
               {/* <Button color="secondary" size='small' onClick={() => saveFavourites(poke.name)}>Add to Favourites</Button> */}
-              <IconButton 
-                color="secondary" 
-                // aria-label="upload picture" 
-                // component="label" 
-                className='favorite--icon'
-              >
+              
                 {/* <input hidden accept="image/*" type="file" /> */}
-                {!poke.isFavourite && <StarOutlineIcon onClick={() => saveFavourites(poke.name)} />}
-                {!!poke.isFavourite && <GradeIcon onClick={() => deleteFavourites(poke.name)} />}
-              </IconButton>
+                {!poke.isFavourite && 
+                  <IconButton 
+                    color="secondary" 
+                    aria-label="upload picture" 
+                    component="label" 
+                    className='favorite--icon'
+                    onClick={() => saveFavourites(poke.name)}
+                  >
+                    <StarOutlineIcon  />
+                  </IconButton>
+                }
+                {!!poke.isFavourite && 
+                  <IconButton 
+                    color="secondary" 
+                    aria-label="upload picture" 
+                    component="label" 
+                    className='favorite--icon'
+                    onClick={() => deleteFavourites(poke.name)} 
+                  >
+                    <GradeIcon />
+                  </IconButton>
+                }
             </Card>
           </Grid>
           ))}
