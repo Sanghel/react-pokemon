@@ -5,7 +5,7 @@ import { PokemonCard } from './PokemonCard';
 import '../styles/Home.css';
 
 function Favourites() {
-  const { favourites, deleteFavourites, onDetails } = React.useContext(Context);
+  const { favourites } = React.useContext(Context);
   return (
     <>
       <Container 
@@ -15,9 +15,9 @@ function Favourites() {
         <Grid container spacing={2}>
           {favourites.map((poke, index) => (
             <PokemonCard 
-            key={index}
-            poke={poke}
-          />
+              key={index}
+              poke={poke}
+            />
           ))}
         </Grid>
       </Container>

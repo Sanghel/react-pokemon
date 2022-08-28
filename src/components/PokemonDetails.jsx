@@ -18,8 +18,8 @@ function PokemonDetails() {
        })
    }
 
-   useEffect(onPokeDetails);
-
+  useEffect(onPokeDetails, []);
+  
   return (
     <>
         <Container

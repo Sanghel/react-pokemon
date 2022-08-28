@@ -6,8 +6,6 @@ import { Context } from './Context';
 
 function ButtonCard({ poke }) {
   const { saveFavourites, deleteFavourites } = React.useContext(Context);
-
-
   return (
     <>
       {!poke.isFavourite && 

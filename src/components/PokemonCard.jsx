@@ -7,13 +7,10 @@ import '../styles/Home.css'
 function PokemonCard({ poke }) {
   const { onDetails } = React.useContext(Context);
 
-
   return (
     <>
       <Grid item xs={12} sm={2}>
-        <Card 
-          className='card'
-        >
+        <Card className='card' >
           <CardActionArea onClick={() => onDetails(poke.name)} >
             <CardContent>
               <CardMedia 
@@ -29,9 +26,9 @@ function PokemonCard({ poke }) {
                 </h6>
             </CardContent>
           </CardActionArea>
-            <ButtonCard 
-              poke={poke}
-            />
+          <ButtonCard 
+            poke={poke}
+          />
         </Card>
       </Grid>
     </>
