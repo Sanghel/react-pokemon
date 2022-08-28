@@ -6,6 +6,7 @@ const Context = React.createContext();
 
 function Provider(props) {
   const [pokemon, setPokemon] = useState([]);
+  // const [isFavourite, setIsFavourite] = useState(false);
   const [favourites, setFavourites] = useState([]);
   const navigate = useNavigate();
 
@@ -15,7 +16,9 @@ function Provider(props) {
         for (let i = 0; i < res.data.results.length; i++) {
           axios.get(res.data.results[i].url)
             .then(result => {
+              // pokemon.isFavourite = false;
               setPokemon(prevArray => [...prevArray, result.data])
+              // console.log(pokemon.isFavourite);
             })
         }
       })
@@ -34,16 +37,34 @@ function Provider(props) {
     navigate('/favourites');
   }
   const saveFavourites = (name) => {
-    pokemon.map(poke => {
-      if (poke.name === name) {
-        setFavourites(prevArray => [...prevArray, poke]);
-      }
-    })
+    // pokemon.map(poke => {
+    //   if (poke.name === name) {
+    //     setFavourites(prevArray => [...prevArray, poke]);
+    //     poke.isFavourite = true;
+    //     const newPokemons = [...pokemon];
+    //     // console.log(poke.isFavourite);
+    //     setPokemon(newPokemons);
+    //     console.log(pokemon.isFavourite);
+    //   }
+    // })
+    // console.log(pokemon.isFavourite)
+    const pokeIndex = pokemon.findIndex(poke => poke.name === name);
+    const newPokemons = [...pokemon];
+    newPokemons.isFavourite = false;
+    newPokemons[pokeIndex].isFavourite = !newPokemons[pokeIndex].isFavourite;
+    setPokemon(newPokemons);
+    setFavourites(prevArray => [...prevArray, newPokemons[pokeIndex]])
+    // console.log(pokemon.isFavourite);
   }
   const deleteFavourites = (name) => {
     for (let i = 0; i < favourites.length; i++) {
       if (favourites[i].name === name) {
         favourites.splice( i , 1 );
+        const pokeIndexDelete = pokemon.findIndex(poke => poke.name === name);
+        const newPokemonsDelete = [...pokemon];
+        newPokemonsDelete.isFavourite = false;
+        newPokemonsDelete[pokeIndexDelete].isFavourite = !newPokemonsDelete[pokeIndexDelete].isFavourite;
+        setPokemon(newPokemonsDelete);
       }
     }
   }
@@ -59,7 +80,7 @@ function Provider(props) {
             saveFavourites,
             favourites,
             setFavourites,
-            deleteFavourites
+            deleteFavourites,
         }}>
             {props.children}
         </Context.Provider>

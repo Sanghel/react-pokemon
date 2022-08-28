@@ -1,10 +1,11 @@
 import React from 'react';
 import { Context } from './Context';
-import { Container, Grid, Card, CardActionArea, CardContent, CardMedia, Typography, Button } from '@mui/material';
+import { Container, Grid, Card, CardActionArea, CardContent, CardMedia, Typography, IconButton } from '@mui/material';
+import GradeIcon from '@mui/icons-material/Grade';
 import '../styles/Home.css';
 
 function Favourites() {
-  const { favourites, deleteFavourites } = React.useContext(Context);
+  const { favourites, deleteFavourites, onDetails } = React.useContext(Context);
   return (
     <>
       <Container 
@@ -17,7 +18,7 @@ function Favourites() {
             <Card 
               className='card'
             >
-              <CardActionArea>
+              <CardActionArea onClick={() => onDetails(poke.name)}>
                 <CardContent>
                   <CardMedia 
                     className='cardMedia'
@@ -35,9 +36,16 @@ function Favourites() {
                   </Button> */}
                 </CardContent>
               </CardActionArea>
-              <Button onClick={() => deleteFavourites(poke.name)}>
-                Quitar de Favoritos
-              </Button>
+              <IconButton 
+                color="secondary" 
+                // aria-label="upload picture" 
+                // component="label" 
+                className='favorite--icon'
+              >
+                {/* <input hidden accept="image/*" type="file" /> */}
+                {/* {!poke.isFavourite && <StarOutlineIcon onClick={() => saveFavourites(poke.name)} />} */}
+                <GradeIcon onClick={() => deleteFavourites(poke.name)} />
+              </IconButton>
             </Card>
           </Grid>
           ))}
