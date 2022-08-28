@@ -10,7 +10,7 @@ function NavBar() {
       <CssBaseline />
       <AppBar color='secondary'>
           <Toolbar>
-            <Typography style={{flexGrow: 1 }} >Pokemon APP</Typography>
+            <Typography style={{flexGrow: 1 }} >Pokedex</Typography>
             <Button variant='text' color='inherit' onClick={() => onHome()}> 
               Home
             </Button>
