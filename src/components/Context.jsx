@@ -14,16 +14,24 @@ function Provider(props) {
     if (count > 1) return
     count++
     try {
+      const pokemonsStoraged = getStorageItem('pokemons');
+      const pokemonStoragedArray = pokemonsStoraged.map(poke => poke.id)
       const resPokemons = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=251')
       const values = await Promise.all(resPokemons.data.results.map(async (pokemon) => {
         const { data } = await axios.get(pokemon.url)
-        return data
+        const dataPoke = data;
+        if (pokemonStoragedArray.includes(dataPoke.id)) {
+          dataPoke.isFavourite = true;
+        }
+        return dataPoke
       }))
       setPokemon({
         ...pokemon,
         loading: false,
         pokemons: values
       })
+      const pokeFavo = values.filter(poke => !!poke?.isFavourite);
+      setFavourites(pokeFavo);
     } catch (error) {
       setPokemon({
         ...pokemon,
@@ -82,10 +90,7 @@ function Provider(props) {
 
     // const pokemonsStoraged = getStorageItem('pokemons') ?? {}
     // const newPokemon = newPokemons[pokeIndex]
-    // setStorageItem('pokemons', {
-    //   ...pokemonsStoraged,
-    //   [newPokemon.id]: newPokemon
-    // });
+    setStorageItem('pokemons', pokeFavo);
   }
   const deleteFavourites = (id) => {
     const values = pokemon.pokemons.map(poke => {
@@ -101,6 +106,7 @@ function Provider(props) {
 
     const pokeFavo = values.filter(poke => !!poke?.isFavourite);
     setFavourites(pokeFavo);
+    setStorageItem('pokemons', pokeFavo);
     // for (let i = 0; i < favourites.length; i++) {
     //   if (favourites[i].name === name) {
     //     favourites.splice( i , 1 );
