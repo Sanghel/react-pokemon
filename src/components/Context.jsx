@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import { getStorageItem, setStorageItem, removeStorageItem } from '../utils/Storage';
+import { getStorageItem, setStorageItem } from '../utils/Storage';
 
 const Context = React.createContext();
 
@@ -41,11 +41,6 @@ function Provider(props) {
     }
   };
 
-  // useEffect(() => {
-  //   getStorageItem(favourites)
-  //   setFavourites(favourites);
-  // }, []);
-  console.log('Antes');
   useEffect(() => {
     loadData()
     
@@ -74,22 +69,6 @@ function Provider(props) {
 
     const pokeFavo = values.filter(poke => !!poke?.isFavourite);
     setFavourites(pokeFavo);
-
-    // const pokeIndex = pokemon.pokemons.findIndex(poke => poke.id === id);
-    // const newPokemons = [...pokemon];
-    // const newFavouritePokemons = [...favourites];
-    // newPokemons.isFavourite = false;
-    // newPokemons[pokeIndex].isFavourite = !newPokemons[pokeIndex].isFavourite;
-
-    
-    // setPokemon(newPokemons);
-    // newFavouritePokemons.push(newPokemons[pokeIndex])
-    // setFavourites(newFavouritePokemons)
-    // // setFavourites(prevArray => [...prevArray, newPokemons[pokeIndex]])
-    // setStorageItem('pokemons', newPokemons[pokeIndex]);
-
-    // const pokemonsStoraged = getStorageItem('pokemons') ?? {}
-    // const newPokemon = newPokemons[pokeIndex]
     setStorageItem('pokemons', pokeFavo);
   }
   const deleteFavourites = (id) => {
@@ -107,19 +86,6 @@ function Provider(props) {
     const pokeFavo = values.filter(poke => !!poke?.isFavourite);
     setFavourites(pokeFavo);
     setStorageItem('pokemons', pokeFavo);
-    // for (let i = 0; i < favourites.length; i++) {
-    //   if (favourites[i].name === name) {
-    //     favourites.splice( i , 1 );
-    //     const pokeIndex = pokemon.findIndex(poke => poke.name === name);
-    //     const newPokemons = [...pokemon];
-    //     // newPokemons.isFavourite = false;
-
-        
-    //     newPokemons[pokeIndex].isFavourite = !newPokemons[pokeIndex].isFavourite;
-    //     setPokemon(newPokemons);
-    //     removeStorageItem(name);
-    //   }
-    // }
   }
 
 

@@ -4,10 +4,11 @@
 }
 
 .card {
-    max-width: 320px;
+    text-align: center;
+    margin: auto;
+    padding: 0rem 1.5rem;
     display: flex;
     flex-direction: column;
-    text-align: center;
 }
 
 .cardMedia {

@@ -5,26 +5,33 @@ import { PokemonCard } from './PokemonCard';
 import '../styles/Home.css';
 
 function Favourites() {
-  const { favourites } = React.useContext(Context);
+  const { favourites, pokemon } = React.useContext(Context);
+  const { loading } = pokemon;
 
   return (
-    <>
-      <Container 
-        maxWidth='lg'
-        className='main-container'
+    <Container 
+      maxWidth='lg'
+      className='main-container'
+    >
+      <Typography
+        variant='h4'
+        color='secondary'
+        align='center'
       >
-        {!favourites.length && <Typography>You don't have any Favourite Pokemon!</Typography>}
-        {favourites && <Grid container spacing={2}>
-              {favourites.map((poke, index) => (
-                <PokemonCard 
-                  key={index}
-                  poke={poke}
-                />
-              ))}
-            </Grid>
+        Favourites
+      </Typography>
+      {loading && <p>Loading...</p>}
+      {!favourites.length && !loading && <Typography>You don't have any Favourite Pokemon!</Typography>}
+      {favourites && !loading && <Grid container spacing={2}>
+            {favourites.map((poke, index) => (
+              <PokemonCard 
+                key={index}
+                poke={poke}
+              />
+            ))}
+          </Grid>
         }
-      </Container>
-    </>
+    </Container>
   )
 }
 

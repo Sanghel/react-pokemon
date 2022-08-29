@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import { Context } from './Context';
 import { PokemonCard } from './PokemonCard';
 import '../styles/Home.css';

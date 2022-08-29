@@ -1,20 +1,16 @@
 .main-container--details {
-    margin-top: 80px;
-    max-width: 100%;
-    padding: 0 auto;
+    margin: 5rem 0;
+    height: auto;
 }
 .card--details {
-    width: 80%;
+    margin: auto;
+    padding: 0rem 1.5rem;
     display: flex;
     flex-direction: column;
-    text-align: center;
 }
 
 .cardMedia--details {
-    height: 50vh;
+    align-self: center;
+    max-width: 20em;
 }
 
-.list--details {
-    list-style: none;
-    text-align: left;
-}
