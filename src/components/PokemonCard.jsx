@@ -11,7 +11,7 @@ function PokemonCard({ poke }) {
     <>
       <Grid item xs={12} sm={2}>
         <Card className='card' >
-          <CardActionArea onClick={() => onDetails(poke.name)} >
+          <CardActionArea onClick={() => onDetails(poke)} >
             <CardContent>
               <CardMedia 
                 className='cardMedia'

@@ -6,6 +6,7 @@ import '../styles/Home.css';
 
 function Home() {
   const { pokemon } = React.useContext(Context);
+  const { loading, error, pokemons } = pokemon
 
   return (
     <>
@@ -14,12 +15,16 @@ function Home() {
         className='main-container'
       >
         <Grid container spacing={2}>
-          {pokemon.map((poke, index) => (
+          {loading && <p>Loading...</p>}
+          {!loading && pokemons?.map((poke, index) => (
             <PokemonCard 
               key={index}
               poke={poke}
             />
           ))}
+          {!loading && error && (
+            <h1>{error}</h1>
+          )}
         </Grid>
       </Container>
     </>

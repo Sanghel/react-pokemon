@@ -1,6 +1,7 @@
 .main-container--details {
     margin-top: 80px;
-    max-width: 95%;
+    max-width: 100%;
+    padding: 0 auto;
 }
 .card--details {
     width: 80%;

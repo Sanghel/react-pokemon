@@ -3,6 +3,7 @@ import { IconButton } from '@mui/material';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import GradeIcon from '@mui/icons-material/Grade';
 import { Context } from './Context';
+import '../styles/Icon.css';
 
 function ButtonCard({ poke }) {
   const { saveFavourites, deleteFavourites } = React.useContext(Context);
@@ -14,7 +15,7 @@ function ButtonCard({ poke }) {
           aria-label="upload picture" 
           component="label" 
           className='favorite--icon'
-          onClick={() => saveFavourites(poke.name)}
+          onClick={() => saveFavourites(poke.id)}
         >
           <StarOutlineIcon  />
         </IconButton>
@@ -25,7 +26,7 @@ function ButtonCard({ poke }) {
           aria-label="upload picture" 
           component="label" 
           className='favorite--icon'
-          onClick={() => deleteFavourites(poke.name)} 
+          onClick={() => deleteFavourites(poke.id)} 
         >
           <GradeIcon />
         </IconButton>
