@@ -1,6 +1,7 @@
 import React from 'react';
-import { Container, Grid, Typography } from '@mui/material';
+import { Container, Grid } from '@mui/material';
 import { Context } from './Context';
+import { LoadingSkeleton } from './LoadingSkeleton';
 import { PokemonCard } from './PokemonCard';
 import '../styles/Home.css';
 
@@ -15,7 +16,8 @@ function Home() {
         className='main-container'
       >
         <Grid container spacing={2}>
-          {loading && <p>Loading...</p>}
+          {loading && <LoadingSkeleton />
+          }
           {!loading && pokemons?.map((poke, index) => (
             <PokemonCard 
               key={index}

@@ -1,5 +1,6 @@
 import React from 'react';
-import { AppBar, Toolbar, CssBaseline, Button, Typography } from '@mui/material';
+import { AppBar, Toolbar, CssBaseline, Button, Typography, IconButton } from '@mui/material';
+import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
 import { Context } from './Context';
 
 function NavBar() {
@@ -10,7 +11,10 @@ function NavBar() {
       <CssBaseline />
       <AppBar color='secondary'>
           <Toolbar>
-            <Typography style={{flexGrow: 1 }} >Pokedex</Typography>
+            <IconButton onClick={() => onHome()}>
+              <CatchingPokemonIcon />
+            </IconButton>
+            <Typography style={{flexGrow: 1 }} variant='h5' >  Pokedex</Typography>
             <Button variant='text' color='inherit' onClick={() => onHome()}> 
               Home
             </Button>

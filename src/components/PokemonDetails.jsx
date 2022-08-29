@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Grid, Card, CardActionArea, CardContent, CardMedia, Typography, Button } from '@mui/material';
+import { Container, Card, CardMedia, Typography, Button, Skeleton } from '@mui/material';
 import { Context } from './Context';
 import '../styles/PokemonDetails.css'
 
@@ -13,7 +13,7 @@ function PokemonDetails() {
   return (
     <Container className='main-container--details' maxWidth='lg'>
       {loading 
-        ? (<p>Loading...</p>)
+        ? (<Skeleton variant="rounded" width={500} height={500} />)
         : ( <Card className='card--details'>
               <CardMedia 
                 component='img'

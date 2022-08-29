@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, useHistory } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Provider } from './components/Context'
 import { NavBar } from './components/NavBar';
 import { Home } from './components/Home';
